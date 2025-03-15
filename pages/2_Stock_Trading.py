@@ -4,10 +4,21 @@ import pandas as pd
 
 # Set up the Streamlit app
 st.title("📈 Stock Trading Signal App")
+
+# Explanation for Users
 st.write("""
 - Slide down the side panel to select stock and parameters.
-""")
+- Enter a stock symbol (e.g., NVDA, AAPL, TSLA).
+- Choose the time interval (e.g., 1 hour, 1 day, 1 month).
+- Adjust price change % and volume multiplier to fine-tune signals.
 
+### 📌 How Signals are Generated:
+- **Price Change (%)**: Measures how much the stock price has changed compared to the previous period.
+- **Volume Change Multiplier**: Compares the current volume to the previous period to detect high activity.
+- **BUY Signal**: Generated when **price increases above the threshold AND volume spikes**.
+- **SELL Signal**: Generated when **price decreases below the threshold AND volume spikes**.
+- **HOLD Signal**: If neither condition is met, we recommend holding the stock.
+""")
 
 # Sidebar for user input
 st.sidebar.header("🔍 Select Stock and Parameters")
@@ -88,4 +99,5 @@ if st.sidebar.button("📊 Run Analysis"):
             # Option to Run Again
             if st.button("🔄 Run Another Analysis"):
                 st.experimental_rerun()
+
 
