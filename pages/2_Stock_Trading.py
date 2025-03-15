@@ -1,94 +1,13 @@
-# import streamlit as st
-# from yahooquery import Ticker
-# import pandas as pd
-
-# # Set up the Streamlit app
-# st.title("📈 Stock Trading Signal App")
-
-# st.write("""
-#- Slide down the side panel to select stock and parameters.
-#""")
-
-# # Define options for selection
-# PRICE_CHANGE_OPTIONS = [0.1, 0.2, 0.3, 1.0, 5.0]  # % change
-# VOLUME_MULTIPLIER_OPTIONS = [1.5, 2.0, 2.5]  # Volume multipliers
-# INTERVAL_OPTIONS = ["1h", "1d", "5d", "1wk", "1mo", "3mo"]  # Available intervals
-
-# # Sidebar for user input
-# st.sidebar.header("🔍 Select Stock and Parameters")
-
-# # Stock symbol input
-# SYMBOL = st.sidebar.text_input("Enter Stock Symbol (e.g., NVDA, AAPL, TSLA):", "NVDA").upper()
-
-# # Time Interval Selection
-# INTERVAL = st.sidebar.selectbox("Select Time Interval", INTERVAL_OPTIONS)
-
-# # Price Change Selection
-# PRICE_CHANGE_THRESHOLD = st.sidebar.selectbox("Select Price Change Threshold (%)", PRICE_CHANGE_OPTIONS)
-
-# # Volume Multiplier Selection
-# VOLUME_MULTIPLIER = st.sidebar.selectbox("Select Volume Multiplier", VOLUME_MULTIPLIER_OPTIONS)
-
-# # Run Analysis Button
-# if st.sidebar.button("📊 Run Analysis"):
-#     st.sidebar.success("Fetching Data and Calculating Signals...")
-
-#     # Fetch historical data based on the selected interval
-#     stock = Ticker(SYMBOL)
-#     hist = stock.history(period="1y", interval=INTERVAL).reset_index()
-
-#     # Calculate % Price Change from Previous Period
-#     hist["Price_Change"] = (hist["close"] - hist["close"].shift(1)) / hist["close"].shift(1) * 100
-
-#     # Calculate Average Volume Over Last 10 Periods
-#     hist["Avg_Volume"] = hist["volume"].rolling(window=10).mean()
-
-#     # Identify High Volume (When Current Volume > Avg Volume * Multiplier)
-#     hist["High_Volume"] = hist["volume"] > (hist["Avg_Volume"] * VOLUME_MULTIPLIER)
-
-#     # Default Signal
-#     hist["Signal"] = "HOLD"
-
-#     # Buy Signal: Price Change Up + High Volume
-#     hist.loc[
-#         (hist["Price_Change"] >= PRICE_CHANGE_THRESHOLD) & hist["High_Volume"],
-#         "Signal"
-#     ] = "BUY"
-
-#     # Sell Signal: Price Change Down + High Volume
-#     hist.loc[
-#         (hist["Price_Change"] <= -PRICE_CHANGE_THRESHOLD) & hist["High_Volume"],
-#         "Signal"
-#     ] = "SELL"
-
-#     # Convert the 'date' column to string before displaying
-#     hist["date"] = hist["date"].astype(str)
-
-#     # Display Results
-#     latest_signal = hist.iloc[-1]["Signal"]
-#     latest_price = hist.iloc[-1]["close"]
-#     latest_volume = hist.iloc[-1]["volume"]
-#     latest_pct_change = hist.iloc[-1]["Price_Change"]
-
-#     st.subheader(f"📢 Latest Signal for {SYMBOL}: **{latest_signal}**")
-#     st.write(f"**📌 Latest Price:** ${latest_price:.2f}")
-#     st.write(f"📊 **Volume:** {latest_volume:,}")
-#     st.write(f"**📈 % Change in Price:** {latest_pct_change:.2f}%")
-
-#     # Show last 5 signals in reverse order with price & % change
-#     st.write(f"🔹 **Recent Signals ({INTERVAL} Interval):**")
-#     st.dataframe(hist[["date", "close", "Price_Change", "Signal"]].tail(5).iloc[::-1])  # Reverse order
-
-#     # Option to Run Again
-#     if st.button("🔄 Run Another Analysis"):
-#         st.experimental_rerun()
-
 import streamlit as st
 from yahooquery import Ticker
 import pandas as pd
 
 # Set up the Streamlit app
 st.title("📈 Stock Trading Signal App")
+st.write("""
+- Slide down the side panel to select stock and parameters.
+""")
+
 
 # Sidebar for user input
 st.sidebar.header("🔍 Select Stock and Parameters")
