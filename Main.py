@@ -20,7 +20,7 @@
 # Welcome to the Yahoo Finance Data Pull application. Use the navigation menu to explore:
 
 # - **Market Screeners**: Discover top gainers, losers, and more.
-# - **Market Index Info**: View details of major market indices.
+# - **Stock Trading**: View details of major market indices.
 # - **Market Summary**: Get an overview of the US market.
 # - **Trending Stocks**: View the latest trending stocks.
 # - **Stock Company Info**: Retrieve information about specific companies.
