@@ -6,8 +6,8 @@
 # st.title("📈 Stock Trading Signal App")
 
 # st.write("""
-- Slide down the side panel to select stock and parameters.
-""")
+#- Slide down the side panel to select stock and parameters.
+#""")
 
 # # Define options for selection
 # PRICE_CHANGE_OPTIONS = [0.1, 0.2, 0.3, 1.0, 5.0]  # % change
